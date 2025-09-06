@@ -1,0 +1,454 @@
+<!-- index.html (Login Page) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Myanmar Ethnic Groups</title>
+    <style>
+        :root {
+            --baby-powder: #F3F6F3;
+            --jordy-blue: #9EBEED;
+            --chefchaouen-blue: #4E90F5;
+            --apple-green: #94C000;
+            --dark-moss-green: #4B6B03;
+            --text-dark: #2D3748;
+            --text-light: #F3F6F3;
+            --error: #e53e3e;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--chefchaouen-blue), var(--jordy-blue));
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .login-card {
+            background: var(--baby-powder);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--apple-green);
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--chefchaouen-blue);
+        }
+
+        .login-card h2 {
+            color: var(--chefchaouen-blue);
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .login-card p {
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .login-form {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--chefchaouen-blue);
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid var(--jordy-blue);
+            border-radius: 10px;
+            font-size: 1rem;
+            background: white;
+            transition: var(--transition);
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--chefchaouen-blue);
+            box-shadow: 0 0 0 3px rgba(78, 144, 245, 0.2);
+        }
+
+        .input-wrapper input::placeholder {
+            color: #a0aec0;
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .checkbox-container input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            left: 0;
+            height: 18px;
+            width: 18px;
+            background-color: white;
+            border: 2px solid var(--jordy-blue);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .checkbox-container:hover input ~ .checkmark {
+            background-color: #f0f4f8;
+        }
+
+        .checkbox-container input:checked ~ .checkmark {
+            background-color: var(--chefchaouen-blue);
+            border-color: var(--chefchaouen-blue);
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .checkbox-container .checkmark:after {
+            left: 5px;
+            top: 1px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .forgot-password {
+            color: var(--chefchaouen-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .forgot-password:hover {
+            color: var(--dark-moss-green);
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--chefchaouen-blue), var(--jordy-blue));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(78, 144, 245, 0.3);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(78, 144, 245, 0.4);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .divider {
+            position: relative;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .divider span {
+            background: var(--baby-powder);
+            padding: 0 15px;
+            position: relative;
+            z-index: 1;
+            color: var(--text-dark);
+            opacity: 0.7;
+        }
+
+        .divider:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--jordy-blue);
+            z-index: 0;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid var(--jordy-blue);
+            border-radius: 10px;
+            background: white;
+            color: var(--text-dark);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-btn.google:hover {
+            background: #f1f3f4;
+        }
+
+        .social-btn.facebook:hover {
+            background: #f0f4f8;
+        }
+
+        .signup-link p {
+            color: var(--text-dark);
+            opacity: 0.8;
+        }
+
+        .signup-link a {
+            color: var(--chefchaouen-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .signup-link a:hover {
+            color: var(--dark-moss-green);
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .login-card {
+                padding: 1.5rem;
+            }
+            
+            .social-login {
+                flex-direction: column;
+            }
+            
+            .remember-forgot {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo">
+                <i>🏛️</i>
+                <h1>Myanmar Ethnic Groups</h1>
+            </div>
+            
+            <h2>Welcome Back</h2>
+            <p>Please sign in to your account</p>
+            
+            <form id="loginForm" class="login-form">
+                <div class="input-group">
+                    <label for="username">Username or Email</label>
+                    <div class="input-wrapper">
+                        <i>👤</i>
+                        <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <i>🔒</i>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                </div>
+                
+                <div class="remember-forgot">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="remember" name="remember">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                
+                <button type="submit" class="login-btn">Sign In</button>
+            </form>
+            
+            <div class="divider">
+                <span>or continue with</span>
+            </div>
+            
+            <div class="social-login">
+                <button class="social-btn google">
+                    <i>🇬</i>
+                    Google
+                </button>
+                <button class="social-btn facebook">
+                    <i>🇫</i>
+                    Facebook
+                </button>
+            </div>
+            
+            <div class="signup-link">
+                <p>Don't have an account? <a href="../HTML/signup.html">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const remember = document.getElementById('remember').checked;
+                
+                // Simple validation
+                if (!username || !password) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+                
+                // Simulate login process
+                console.log('Login attempt:', { username, password, remember });
+                
+                // Show loading state
+                const loginBtn = document.querySelector('.login-btn');
+                const originalText = loginBtn.textContent;
+                loginBtn.textContent = 'Signing in...';
+                loginBtn.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    // Reset button
+                    loginBtn.textContent = originalText;
+                    loginBtn.disabled = false;
+                    
+                    // Simulate successful login
+                    alert('Login successful! Welcome back, ' + username);
+                }, 1500);
+            });
+            
+            // Add focus effects to input fields
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.parentElement.classList.remove('focused');
+                });
+            });
+            
+            // Social login buttons
+            const socialButtons = document.querySelectorAll('.social-btn');
+            socialButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const platform = this.classList.contains('google') ? 'Google' : 'Facebook';
+                    alert(`Signing in with ${platform}... (This is a demo)`);
+                });
+            });
+            
+            // Forgot password link
+            const forgotPassword = document.querySelector('.forgot-password');
+            forgotPassword.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Password reset functionality would be implemented here.');
+            });
+        });
+    </script>
+</body>
+</html>

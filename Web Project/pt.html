@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="sigma-web.css">
+</head>
+<body>
+    <div class="swiper-container">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <img src="./CSS3 Cascading Style Sheets Logo HTML PNG.jpg" alt="ethnics">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <img src="./download (4).jpg" alt="ethnics">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <img src="./How to Overcome Failure and Move on in Life_.jpg" alt="ethnics">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <img src="./HTML 5 Logo.jpg" alt="ethnics">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <img src="./Importance of React JS Development Company and Next JS Developers.jpg" alt="ethnics">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <img src="./Java Programming Language Icon PNG & SVG Design For T-Shirts.jpg" alt="ethnics">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <img src="./Smiling kids giving thumbs _ Premium AI-generated image.jpg" alt="ethnics">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <img src="./The C++ Programming Language Computer Programming Programmer PNG.jpg" alt="ethnics">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-button-prev">
+           <i class="bx bx-left-arrow-alt"></i>
+        </div>
+        <div class="swiper-button-next">
+            <i class="bx bx-right-arrow-alt"></i>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".swiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 100,
+                modifier: 4,
+                slideShadows: true,
+            },
+            loop:true,
+            navigation:{
+                nextEl: ".swiper-button-next",
+                prevEL: ".swiper-button-prev",
+            },
+            keyboard:{
+                enabled: true,
+            },
+            mousewheel:{
+                thresholDelta: 70,
+            },
+            breakpoints:{
+            560:{
+                slidesPerView: 2.5,
+            },
+            768:{
+                slidesPerView: 3,
+            },
+            1024:{
+                slidesPerView: 3,
+            }
+        }
+        }
+        )
+    </script>
+</body>
+</html>
